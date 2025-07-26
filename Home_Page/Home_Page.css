@@ -32,80 +32,10 @@ header{
     transition: 0.5s;
 }
 
-main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.formularioDeAdicao {
-    height: 874px;
-    width: 958px;
-    background-color: #ffffff;
-    border: 4px solid;
-    border-color: #333333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-}
 
-.formularioDeAdicao h1 {
-    font-size: 60px;
-    font-weight: 600;
-}
 
-.nomeAno {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-}
 
-.preenchimentoEtapas {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.Preenchimento {
-    font-size: 30px;
-    font-weight: 500;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.Preenchimento input {
-    height: 39px;
-    background-color: #e6e6e6;
-    border: 1px solid;
-    border-color: #333333;
-}
-.nomeInput {
-    width: 564px;
-}
-.anoInput {
-    width: 177px;
-}
-.discricaoInput {
-    height: 250px;
-}
-
-.btn {
-    width: 209px;
-    height: 60px;
-    color: #FFFFFF;
-    font-size: 24px;
-    background-color: #2C5680;
-    border: 1px solid;
-    border-color: #333333;
-}
-
-.btn:hover {
-    color: #bdddfc ;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-}
 
 footer {
     height: 275px;
@@ -178,3 +108,5 @@ footer {
     color: white;
     margin-bottom: 4px;
 }
+
+
