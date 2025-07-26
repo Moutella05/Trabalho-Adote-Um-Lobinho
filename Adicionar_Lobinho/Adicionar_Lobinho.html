@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="adicionar_lobinho_css.css">
+    <script src="adicionar_lobinho_script.js" defer></script>
+    <title>Adicionar Lobinho</title>
 </head>
 <body>
 
@@ -16,7 +18,30 @@
     </header>
 
     <main>
-
+        <form class="formularioDeAdicao">
+            <h1>Coloque um lobinho para adoção</h1>
+            <div class="Preenchimento">
+                <div class="nomeAno">
+                    <div class="preenchimentoEtapas">
+                        <p>Nome do lobinho:</p>
+                        <input id="nomeLobinho">
+                    </div>
+                    <div class="preenchimentoEtapas">
+                        <p>Anos:</p>
+                        <input id="anos">
+                    </div>
+                </div>
+                <div class="preenchimentoEtapas">
+                    <p>Link da foto:</p>
+                    <input id="linkFoto">
+                </div>
+                <div class="preenchimentoEtapas">
+                    <p>Descrição:</p>
+                    <input class="descricaoInput" id="descricao">
+                </div>
+            </div>
+            <button id="btnSalvar" type="button" class="btn">Salvar</button>
+        </form>
     </main>
 
     <footer>

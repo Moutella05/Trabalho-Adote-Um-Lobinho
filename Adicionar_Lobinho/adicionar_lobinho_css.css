@@ -1,0 +1,21 @@
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formularioDeAdicao {
+    height: 874px;
+    width: 958px;
+    border: 1px solid;
+    border-color: #333333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.nomeAno {
+    display: flex;
+    flex-direction: row;
+}
