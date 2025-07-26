@@ -1,1 +1,1 @@
-Integrantes: João Vitor Moutella Lopes, Gabriel Baeta Pereira
+Integrantes: João Vitor Moutella Lopes, Gabriel Baeta Pereira, Rodrigo Wagner de Souza
