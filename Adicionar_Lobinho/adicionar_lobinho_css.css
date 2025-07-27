@@ -32,7 +32,11 @@ header{
     transition: 0.5s;
 }
 
+/*-------------------------------------------------------------------------------------*/
+
 main {
+    margin: 60px;
+    margin-bottom: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -77,19 +81,35 @@ main {
 }
 
 .Preenchimento input {
-    height: 39px;
+    padding-left: 5px;
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
     background-color: #e6e6e6;
     border: 1px solid;
     border-color: #333333;
 }
 .nomeInput {
-    width: 564px;
+    height: 39px;
+    width: 559px;
 }
-.anoInput {
-    width: 177px;
+.anosInput {
+    height: 39px;
+    width: 172px;
 }
-.discricaoInput {
+.linkInput {
+    height: 39px;
+    width: 755px;
+}
+.descricaoInput {
     height: 250px;
+    width: 755px;
+    padding: 5px;
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+    background-color: #e6e6e6;
+    border: 1px solid;
+    border-color: #333333;
+    resize: none;
 }
 
 .btn {
@@ -106,6 +126,8 @@ main {
     color: #bdddfc ;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+/*-------------------------------------------------------------------------------------*/
 
 footer {
     height: 275px;
