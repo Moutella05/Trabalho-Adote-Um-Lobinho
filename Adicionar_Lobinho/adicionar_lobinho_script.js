@@ -39,9 +39,14 @@ function salvar() {
     let anos = parseInt(anosLobinho.value)
     let link = linkFoto.value
     let descricao = descricaoLobinho.value
+    //confere se todos foram inserido (exceto os anos pois este é conferido depois)
+    if(nome == '' || link == '' || descricao == ''){
+        alert("Por favor, preencha todos os campos!")
+        return
+    }
     //confere se os anos foram inseridos corretamente
-    if (!Number.isInteger(anos) || anosLobinho.value == ""){
-        alert("Valor dos Anos inválido. Por favor, digíte um número inteiro.")
+    if (!Number.isInteger(anos)){
+        alert("Valor dos Anos inválido ou vazio. Por favor, digíte um número inteiro.")
         limpar(2)
         return
     }
@@ -55,13 +60,13 @@ function salvar() {
     }
     objeto = {id: lobos[lobos.length -1].id + 1, nome: nome, idade: anos, descricao: descricao, imagem: link, adotado: false, nomeDono: null, idadeDono: null, emailDono: null}
     lobos.push(objeto)
-    //Para atualizar a memória:
+    //!!! Para atualizar a memória: (ainda em forma de comentário para não atualizá-la durante os debugs) !!!
     //localStorage.setItem('lobos', JSON.stringify(lobos))
     salvo_sucesso()
     limpar(5)
 }
 
-//função que mostra um quadrado dizendo que o lobinho foi salvo e manda o usuário para a lista de lobinhos caso clique -- sem pop up -> a ideia é ser algo 
+//função que mostra um quadrado dizendo que o lobinho foi salvo e manda o usuário para a lista de lobinhos caso clique -- sem pop up -> a ideia é ser algo opcional
 let salvou = true
 function salvo_sucesso(){
     if (salvou) {
