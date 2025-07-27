@@ -35,23 +35,67 @@ let descricaoLobinho = document.querySelector("#descricaoLobinho")
 //função que salva as informações colocadas no array de objetos lobinhos.json
 function salvar() {
     //variaveis com valores internos
-    let nome = nomeLobinho.value 
+    let nome = nomeLobinho.value
     let anos = parseInt(anosLobinho.value)
     let link = linkFoto.value
     let descricao = descricaoLobinho.value
-    objeto = {id: 1001, nome: nome, idade: anos, descricao: descricao, imagem: link, adotado: false, nomeDono: null, idadeDono: null, emailDono: null}
+    //confere se os anos foram inseridos corretamente
+    if (!Number.isInteger(anos) || anosLobinho.value == ""){
+        alert("Valor dos Anos inválido. Por favor, digíte um número inteiro.")
+        limpar(2)
+        return
+    }
+    // confere se o link da foto é realmente um link
+    try {
+        new URL(link);
+    } catch {
+        alert("O link da sua foto não é um link ou apresenta algum erro de digitação. Confira e envie novamente.")
+        limpar(3)
+        return
+    }
+    objeto = {id: lobos[lobos.length -1].id + 1, nome: nome, idade: anos, descricao: descricao, imagem: link, adotado: false, nomeDono: null, idadeDono: null, emailDono: null}
     lobos.push(objeto)
-    // para atualizar a memória:
-    // localStorage.setItem('lobos', JSON.stringify(lobos))
-    limpar()
+    //Para atualizar a memória:
+    //localStorage.setItem('lobos', JSON.stringify(lobos))
+    salvo_sucesso()
+    limpar(5)
 }
 
+//função que mostra um quadrado dizendo que o lobinho foi salvo e manda o usuário para a lista de lobinhos caso clique -- sem pop up -> a ideia é ser algo 
+let salvou = true
+function salvo_sucesso(){
+    if (salvou) {
+        let pai = document.querySelector("#forms")
+        let novaDiv = document.createElement("div");
+        novaDiv.innerHTML = "<a class='salvo' href='../Lista_Lobinhos/Lista_Lobinhos.html'>Seu lobinho foi salvo com sucesso! Clique aqui para ir para lista de lobinhos!</a>";
+        pai.appendChild(novaDiv)
+    }
+    salvou = false
+}
+
+
 //função que limpa os espaços de input para colocar novos
-function limpar() {
-    nomeLobinho.value = ""
-    anosLobinho.value = ""
-    linkFoto.value = ""
-    descricaoLobinho.value = ""
+function limpar(n) {
+    switch (n){
+        case 1:
+            nomeLobinho.value = ""
+            return
+        case 2:
+            anosLobinho.value = ""
+            return
+        case 3:
+            linkFoto.value = ""
+            return
+        case 4:
+            descricaoLobinho.value = ""
+            return
+        case 5:
+            nomeLobinho.value = ""
+            anosLobinho.value = ""
+            linkFoto.value = ""
+            descricaoLobinho.value = ""
+            return
+    }
 }
 
 //funcionamento do botao
