@@ -1,0 +1,83 @@
+/* Estilos específicos para a página de listagem de lobinhos */
+
+
+/* Principal */
+main {
+    min-height: 60vh;
+    padding: 40px 20px;
+}
+
+
+
+/* Grid de lobinhos */
+
+
+
+.lobinhos-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.lobinhos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+
+
+/* Cards dos lobinhos */
+
+
+
+.lobinho-card {
+    background: white;
+    border: 2px solid #333333;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.lobinho-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.lobinho-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.lobinho-info {
+    padding: 20px;
+}
+
+.lobinho-nome {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333333;
+}
+
+.lobinho-idade {
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 15px;
+}
+
+.btn-adotar {
+    background-color: #2C5680;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+.btn-adotar:hover {
+    background-color: #1e3d5c;
+}

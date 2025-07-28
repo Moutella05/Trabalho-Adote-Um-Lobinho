@@ -2,7 +2,7 @@
 
 async function inicializarLocalStorage() {
     try {
-        const response = await fetch('Trabalho-Adote-Um-Lobinho/lobinhos.json');
+        const response = await fetch('../../lobinhos.json');
         if (!response.ok) {
             throw new Error(`Erro ao buscar lobinho.json: ${response.statusText}`);
         }
@@ -40,12 +40,12 @@ function salvar() {
     let link = linkFoto.value
     let descricao = descricaoLobinho.value
     //confere se todos foram inserido (exceto os anos pois este é conferido depois)
-    if(nome == '' || link == '' || descricao == ''){
+    if (nome == '' || link == '' || descricao == '') {
         alert("Por favor, preencha todos os campos!")
         return
     }
     //confere se os anos foram inseridos corretamente
-    if (!Number.isInteger(anos)){
+    if (!Number.isInteger(anos)) {
         alert("Valor dos Anos inválido ou vazio. Por favor, digíte um número inteiro.")
         limpar(2)
         return
@@ -58,7 +58,7 @@ function salvar() {
         limpar(3)
         return
     }
-    objeto = {id: lobos[lobos.length -1].id + 1, nome: nome, idade: anos, descricao: descricao, imagem: link, adotado: false, nomeDono: null, idadeDono: null, emailDono: null}
+    objeto = { id: lobos[lobos.length - 1].id + 1, nome: nome, idade: anos, descricao: descricao, imagem: link, adotado: false, nomeDono: null, idadeDono: null, emailDono: null }
     lobos.push(objeto)
     //!!! Para atualizar a memória: (ainda em forma de comentário para não atualizá-la durante os debugs) !!!
     //localStorage.setItem('lobos', JSON.stringify(lobos))
@@ -68,7 +68,7 @@ function salvar() {
 
 //função que mostra um quadrado dizendo que o lobinho foi salvo e manda o usuário para a lista de lobinhos caso clique -- sem pop up -> a ideia é ser algo opcional
 let salvou = true
-function salvo_sucesso(){
+function salvo_sucesso() {
     if (salvou) {
         let pai = document.querySelector("#forms")
         let novaDiv = document.createElement("div");
@@ -81,7 +81,7 @@ function salvo_sucesso(){
 
 //função que limpa os espaços de input para colocar novos
 function limpar(n) {
-    switch (n){
+    switch (n) {
         case 1:
             nomeLobinho.value = ""
             return

@@ -1,0 +1,36 @@
+/* Estilos específicos para a página de detalhes do lobinho */
+
+main {
+    min-height: 60vh;
+    padding: 40px 20px;
+}
+
+.lobinho-detalhes {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border: 2px solid #333333;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.lobinho-header {
+    display: flex;
+    gap: 30px;
+    padding: 30px;
+}
+
+.lobinho-foto {
+    flex: 1;
+    max-width: 400px;
+}
+
+.lobinho-foto img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.lobinho-info-detalhes {
+    flex: 1;
+}

@@ -1,4 +1,7 @@
 async function inicializarLocalStorage() {
+
+    let lobos = JSON.parse(localStorage.getItem('lobos'));
+
     try {
         const response = await fetch('lobinhos.json');
         if (!response.ok) {
