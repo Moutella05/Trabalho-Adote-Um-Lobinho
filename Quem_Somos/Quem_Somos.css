@@ -1,10 +1,29 @@
+/* normalize */
+
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-header{
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+
+/* header */
+
+
+
+header {
     height: 130px;
     background-color: #85CDF5;
     border-bottom: 2px solid black;
@@ -27,13 +46,14 @@ header{
 }
 
 .Menu_Top:hover {
-    color:blue;
+    color: blue;
     transform: scale(1.2);
     transition: 0.5s;
 }
 
 
 
+/* footer */
 
 
 
@@ -44,12 +64,16 @@ footer {
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
+    flex-shrink: 0;
+    /* Impede que o footer encolha */
+    margin-top: auto;
+    /* Empurra o footer para baixo */
 }
 
 .Footer_Border {
     width: 100%;
     min-height: 5px;
-    background-image: linear-gradient(to right,#DEB959 , #2C5680);
+    background-image: linear-gradient(to right, #DEB959, #2C5680);
 }
 
 .Footer_Estilizacao {
@@ -86,7 +110,7 @@ footer {
     margin-top: 10px;
 }
 
-#Contato4 > a {
+#Contato4>a {
     background-color: yellow;
     text-decoration: none;
     padding: 7px 10px;
@@ -109,3 +133,54 @@ footer {
     margin-bottom: 4px;
 }
 
+
+/* ------------------------------------------ */
+
+main {
+    flex: 1;
+    display: flex;
+
+    /* Bota no centro */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+
+    /* Garante que o main ocupe o espaço entre o header e o footer */
+    flex-grow: 1;
+    padding: 40px 20px;
+}
+
+
+
+/* texto */
+
+.titulo {
+    width: 100%;
+    max-width: 811.59px;
+    margin: 50px auto 20px auto;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 48px;
+    line-height: 56px;
+    text-align: center;
+    color: #000000;
+    font-weight: 300;
+}
+
+.descricao {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+
+    font-family: 'Darker Grotesque', sans-serif;
+    font-style: normal;
+    font-size: 24px;
+    font-weight: 200;
+
+    line-height: 32px;
+    text-align: center;
+    letter-spacing: 0.155em;
+    color: #000000;
+    padding: 20px;
+}
