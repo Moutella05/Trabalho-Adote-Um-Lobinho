@@ -60,17 +60,25 @@ function mostrarLobinhos() {
         }
 
         return `
-            <div class="lobinho-card">
-                <div class="lobinho-imagem-container">
-                    <img src="${lobo.imagem}" alt="${lobo.nome}" class="lobinho-imagem">
+            <div class="conteudo">
+                <div class="base-img1">
+                    <div class="fundo1"></div>
+                    <img src="${lobo.imagem}" alt="${lobo.nome}" id="imagem1">
                 </div>
-                <div class="lobinho-dados">
-                    <h2 class="lobinho-nome">${lobo.nome}</h2>
-                    <p class="lobinho-idade">Idade: ${lobo.idade} anos</p>
-                    <p class="lobinho-descricao">${descricao}</p>
-                    <div class="lobinho-botao-container">
-                        <button class="btn-adotar" onclick="irParaAdocao(${lobo.id})">Adotar</button>
+
+                <div class="informacoes">
+                    <div class="header-info">
+                        <div>
+                            <p class="subtitulo1" id="subtitulo1">${lobo.nome}</p>
+                            <p class="idade1">Idade: <span id="idade1">${lobo.idade}</span> anos</p>
+                        </div>
+                        
+                        <div class="lobinho-botao-container">
+                            <button class="btn-adotar" onclick="irParaAdocao(${lobo.id})">Adotar</button>
+                        </div>
                     </div>
+
+                    <p class="descricao1" id="descricao1">${descricao}</p>
                 </div>
             </div>
         `;
@@ -86,17 +94,25 @@ function mostrarLobinhos() {
         }
 
         return `
-            <div class="lobinho-card">
-                <div class="lobinho-imagem-container">
-                    <img src="${lobo.imagem}" alt="${lobo.nome}" class="lobinho-imagem">
+            <div class="conteudo">
+                <div class="base-img1">
+                    <div class="fundo1"></div>
+                    <img src="${lobo.imagem}" alt="${lobo.nome}" id="imagem1">
                 </div>
-                <div class="lobinho-dados">
-                    <h2 class="lobinho-nome">${lobo.nome}</h2>
-                    <p class="lobinho-idade">Idade: ${lobo.idade} anos</p>
-                    <p class="lobinho-descricao">${descricao}</p>
-                    <div class="lobinho-botao-container">
-                        <button class="btn-adotar-adotado">Adotado</button>
+
+                <div class="informacoes">
+                    <div class="header-info">
+                        <div>
+                            <p class="subtitulo1" id="subtitulo1">${lobo.nome}</p>
+                            <p class="idade1">Idade: <span id="idade1">${lobo.idade}</span> anos</p>
+                        </div>
+                        <div class="lobinho-botao-container">
+                            <button class="btn-adotar-adotado">Adotado</button>
+                        </div>
                     </div>
+
+                    <p class="descricao1" id="descricao1">${descricao}</p>
+                    <p class="nome-dono">Adotado por: ${lobo.nomeDono || 'Não informado'}</p>
                 </div>
             </div>
         `;
@@ -122,7 +138,7 @@ function mostrarLobinhos() {
 
 // funcao pra ir pra pagina de adocao
 function irParaAdocao(idDoLobo) {
-    window.location.href = '../Adotar_Lobinho/Adotar_Lobinho.html?id=' + idDoLobo;
+    window.location.href = '../Show_Lobinho/Show_Lobinho.html?id=' + idDoLobo;
 }
 
 // quando a pagina carregar
