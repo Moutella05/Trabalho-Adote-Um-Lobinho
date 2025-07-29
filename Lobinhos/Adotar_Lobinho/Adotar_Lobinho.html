@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS Global (Header + Footer) -->
     <link rel="stylesheet" href="../layout/layout_main.css">
-    <!-- CSS Específico (Adoção) -->
     <link rel="stylesheet" href="adotar_specific.css">
     <title>Adotar Lobinho</title>
 </head>
@@ -26,7 +24,30 @@
     </header>
 
     <main>
-
+        <section class="Top">
+            <img alt="Wolf" id="Imagem">
+            <div class="LoboInfo">
+                <h1>Adote o (a) <span id="nome"></span></h1>
+                <p>ID:<span id="ID"></span></p>
+            </div>
+        </section>
+        <section class="Botton">
+            <div class="Form">
+                <div>
+                    <p class="Topic">Seu nome:</p>
+                    <input type="text" id="inputNome">
+                </div>
+                <div class ="Idade">
+                    <p class="Topic">Idade:</p>
+                    <input type="number" id="inputIdade">
+                </div>
+            </div>
+            <div class="Email">
+                <p class="Topic">Email:</p>
+                <input type="email" id="inputEmail">
+            </div>
+        </section>
+        <button type="submit" class="Adotar">Adotar</button>
     </main>
 
     <footer>
@@ -62,7 +83,7 @@
         </div>
 
     </footer>
-
+<script src="./Adotar_Lobinho.js"></script>
 </body>
 
 </html>
