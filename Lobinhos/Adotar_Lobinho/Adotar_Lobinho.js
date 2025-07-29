@@ -40,9 +40,18 @@ function adicionarDados() {
     let nomeDono = nome.value;
     let idadeDono = idade.value;
     let emailDono = email.value;
-    let objeto = {id: loboSelecionado.id, nome: loboSelecionado.nome, idade: loboSelecionado.idade, descricao: loboSelecionado.descricao, imagem: loboSelecionado.imagem, adotado: true, nomeDono: nomeDono, idadeDono: idadeDono, emailDono: emailDono}
-    lobos[ID] = objeto
+    let objeto = { id: loboSelecionado.id, nome: loboSelecionado.nome, idade: loboSelecionado.idade, descricao: loboSelecionado.descricao, imagem: loboSelecionado.imagem, adotado: true, nomeDono: nomeDono, idadeDono: idadeDono, emailDono: emailDono }
+
+    // Corrigindo o bug: usar loboSelecionado.id em vez de ID
+    let indexLobo = lobos.findIndex(lobo => lobo.id === loboSelecionado.id);
+    if (indexLobo !== -1) {
+        lobos[indexLobo] = objeto;
+    }
+
     localStorage.setItem('lobos', JSON.stringify(lobos));
+
+    // Redirecionar para Show_Lobinho após a adoção
+    window.location.href = '../Show_Lobinho/Show_Lobinho.html?id=' + loboSelecionado.id;
     alert("Lobinho adotado com sucesso!");
 }
 
