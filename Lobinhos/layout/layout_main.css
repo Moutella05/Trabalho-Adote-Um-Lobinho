@@ -21,7 +21,6 @@
 header {
     height: 130px;
     background-color: #85CDF5;
-    border-bottom: 2px solid black;
 }
 
 .Menu {
@@ -102,12 +101,10 @@ footer {
 }
 
 #Contato4>a {
-    background-color: yellow;
+    background-color: #DEB959;
     text-decoration: none;
     padding: 7px 10px;
     margin-top: 10px;
-    border: 1px solid black;
-    border-radius: 5%;
 }
 
 .Footer_Direita {
