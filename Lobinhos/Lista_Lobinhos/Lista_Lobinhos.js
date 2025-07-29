@@ -1,5 +1,5 @@
 // funcao pra mostrar os lobinhos na tela
-function mostrarLobinhos() {
+function mostrarLobinhos(pagina = 1) {
 
 
     // PEGA OS DADOS DO LOCAL STORAGE E CHECA SE EXISTE
@@ -28,17 +28,34 @@ function mostrarLobinhos() {
 
 
 
+    // CONFIGURACOES DA PAGINACAO
+
+
+
+    var lobosPorPagina = 4;
+    var totalLobos = listaLobos.length;
+    var totalPaginas = Math.ceil(totalLobos / lobosPorPagina);
+
+    // garante que a pagina esta dentro do limite
+    if (pagina < 1) pagina = 1;
+    if (pagina > totalPaginas) pagina = totalPaginas;
+
+    // calcula quais lobos mostrar nesta pagina
+    var inicio = (pagina - 1) * lobosPorPagina;
+    var fim = inicio + lobosPorPagina;
+    var lobosParaMostrar = listaLobos.slice(inicio, fim);
+
+
+
+
     // verificacao no console
-    console.log('encontrou', listaLobos.length, 'lobinhos');
+    console.log('mostrando', lobosParaMostrar.length, 'lobinhos da pagina', pagina, 'de', totalPaginas);
 
 
 
+    // FUNCTIONS PARA CRIAR OS CARDS
 
-    // 
 
-
-    // variavel pra guardar o html dos cards
-    var html = '';
 
     // funcao pra fazer um card de lobo disponivel (layout 1)
     function fazerCardLoboDisponivel1(lobo) {
@@ -127,7 +144,7 @@ function mostrarLobinhos() {
         `;
     }
 
-    // funcao pra fazer um card de lobo ja adotado (layout 2)
+    // funcao pra fazer um card de lobo ja adotado (img pra esquerda)
     function fazerCardLoboAdotado2(lobo) {
         var descricao = lobo.descricao;
 
@@ -156,11 +173,19 @@ function mostrarLobinhos() {
         `;
     }
 
-    // passa por todos os lobos e faz os cards
-    for (var i = 0; i < listaLobos.length; i++) {
 
-        var loboAtual = listaLobos[i];
-        
+    // LOOP PARA CRIAR OS CARDS
+
+
+
+    // variavel pra guardar o html dos cards
+    var html = '';
+
+    // passa por todos os lobos da pagina e faz os cards
+    for (var i = 0; i < lobosParaMostrar.length; i++) {
+
+        var loboAtual = lobosParaMostrar[i];
+
         var ehLayout2 = (i % 2 === 1); // alterna layouts
 
         // se o lobo nao foi adotado, faz card normal
@@ -180,9 +205,33 @@ function mostrarLobinhos() {
         }
     }
 
+
+
     // coloca todos os cards na tela
     containerCards.innerHTML = html;
+
+    // CONFIGURA PAGINACAO
+    var btnAnterior = document.getElementById('btn-anterior');
+    var btnProximo = document.getElementById('btn-proximo');
+    var infoPagina = document.getElementById('info-pagina');
+
+    if (btnAnterior && btnProximo && infoPagina) {
+        infoPagina.textContent = `${pagina} / ${totalPaginas}`;
+        btnAnterior.disabled = pagina <= 1;
+        btnProximo.disabled = pagina >= totalPaginas;
+
+        // configura os botoes para usar as variaveis locais
+        btnAnterior.onclick = () => {
+            if (pagina > 1) mostrarLobinhos(pagina - 1);
+        };
+        btnProximo.onclick = () => {
+            if (pagina < totalPaginas) mostrarLobinhos(pagina + 1);
+        };
+    }
 }
+
+
+// FUNCOES AUXILIARES
 
 // quando a pagina carregar
 document.addEventListener('DOMContentLoaded', function () {
