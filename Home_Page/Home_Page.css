@@ -271,13 +271,14 @@ header{
 
     font-weight: 700;
     font-size: 36px;
+
 }
 
 .exemplo .idade1{
     color: black;
+    margin-top: 5px;
     width: 110px;
     height: 45px;
-
 
     font-weight: 300;
     font-size: 20px;
@@ -295,7 +296,7 @@ header{
 .exemplo .subtitulo2{
     color: black;
 
-    width: 199.7px;
+    width: auto;
     height: 32px;
 
     font-weight: 700;
@@ -306,9 +307,9 @@ header{
 
 .exemplo .idade2{
     color: black;
+    margin-top: 5px;
     width: 110px;
     height: 45px;
-
 
     font-weight: 300;
     font-size: 20px;
