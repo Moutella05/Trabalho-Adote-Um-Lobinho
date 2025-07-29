@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS Global (Header + Footer) -->
     <link rel="stylesheet" href="../layout/layout_main.css">
-    <!-- CSS Específico (Show) -->
     <link rel="stylesheet" href="show_specific.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap" rel="stylesheet">
     <script src="show_lobinho.js" defer></script>
     <title>Detalhes do Lobinho</title>
 </head>
@@ -28,16 +29,16 @@
 
     <main>
         <h1 id="nomeLobo"></h1>
-        <section>
-            <div class="base-img">
-                <div class="Fundo"></div>
-                    <div>
+        <section class="informacoes">
+            <div>
+                <div class="base-img">
+                    <div class="Fundo"></div>
                     <img id="imagemLobo" src="" alt="Imagem do Lobinho">
-                    <div class="botao_imagem">
-                        <a href="../Adotar_Lobinho/Adotar_Lobinho.html"><button type="submit" id="adotarButton">Adotar</button></a>
-                        <a href="../Lista_Lobinhos/Lista_Lobinhos.html"><button type="submit" id="excluirButton">Excluir</button></a>
-                    </div>
-                    </div>
+                </div>
+                <div class="botao_imagem">
+                    <a href="../Adotar_Lobinho/Adotar_Lobinho.html"><button type="submit" id="adotarButton"><p class="textBotao">ADOTAR</p></button></a>
+                    <a href="../Lista_Lobinhos/Lista_Lobinhos.html"><button type="submit" id="excluirButton"><p class="textBotao" >EXCLUIR</p></button></a>
+                </div>
             </div>
             <div>
                 <p id="descricaoLobo"></p>
