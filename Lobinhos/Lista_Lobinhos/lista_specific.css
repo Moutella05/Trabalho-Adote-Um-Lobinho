@@ -32,91 +32,118 @@ main {
 
 
 
-/* cada card individual do lobinho */
+/* CARDS DOS LOBOS */
+
+
+
 
 .lobinho-card {
     margin-bottom: 80px;
 }
 
 .conteudo {
-    display: flex;
-    flex-direction: row;
-    gap: 100px;
-    margin-bottom: 35px;
-    max-width: 1000px;
-    margin: 0 auto 35px auto;
+    /* group */
+    position: relative;
+    width: 999px;
+    height: 361px;
+    margin: 0 auto 80px auto;
 }
 
 /* parte da imagem do lobinho */
 
 .base-img1 {
-    position: relative;
-    width: fit-content;
-    margin-top: 50px;
+    /* Detalhe da Imagem */
+    box-sizing: border-box;
+    position: absolute;
+    width: 430px;
+    height: 328px;
+    left: 0px;
+    top: 0px;
+    background: #2C5680;
+    border: 4px solid #333333;
 }
 
 .fundo1 {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(44, 86, 128, 1);
-    border: 4px solid rgba(51, 51, 51, 1);
-    bottom: 30px;
-    right: 30px;
-    z-index: 1;
+    display: none;
+    /* Não precisamos mais do fundo separado */
+}
+
+.fundo2 {
+    display: none;
+    /* Não precisamos mais do fundo separado */
 }
 
 #imagem1 {
-    display: block;
+    /* Mask Group / Imagem */
+    position: absolute;
     width: 430px;
     height: 328px;
+    left: 41px;
+    top: 33px;
     object-fit: cover;
-    position: relative;
     z-index: 2;
 }
 
 /* textos do lobinho (nome, idade, descrição) */
 
 .informacoes {
-    width: 461px;
-    height: 371px;
-    display: block;
-    justify-self: center;
-    align-content: center;
-    align-items: end;
+    /* Dados do Lobo */
+    position: absolute;
+    width: 478px;
+    height: 339px;
+    left: 521px;
+    top: 22px;
 }
 
 .header-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+    height: auto;
 }
 
 .subtitulo1 {
-    color: black;
-    width: 199.7px;
-    height: 32px;
-    font-weight: 700;
+    /* Nome do Lobo */
+    position: absolute;
+    width: 206.34px;
+    height: 49px;
+    left: 0px;
+    top: 0px;
+    font-family: 'Darker Grotesque';
+    font-style: normal;
     font-size: 36px;
+    line-height: 49px;
+    color: #000000;
     margin: 0;
 }
 
 .idade1 {
-    color: black;
-    width: 110px;
-    height: 45px;
-    font-weight: 300;
+    /* Idade: XX anos */
+    position: absolute;
+    width: 114.06px;
+    height: 27px;
+    left: 0px;
+    top: 49px;
+    font-family: 'Darker Grotesque';
+    font-style: normal;
     font-size: 20px;
+    line-height: 27px;
+    color: #000000;
     margin: 0;
 }
 
 .descricao1 {
-    color: black;
-    width: 461px;
+    /* Descrição */
+    position: absolute;
+    width: 478px;
     height: 235px;
+    left: 0px;
+    top: 104px;
+    font-family: 'Darker Grotesque';
+    font-style: normal;
+    font-weight: 400;
     font-size: 24px;
     line-height: 20px;
+    color: #000000;
     margin: 0;
     overflow: hidden;
     display: -webkit-box;
@@ -130,27 +157,38 @@ main {
 /* botão de adotar lobinho */
 
 .lobinho-botao-container {
+    /* Group 3.3 */
+    position: absolute;
     width: 157px;
     height: 45.92px;
-    margin-top: 0;
+    left: 321px;
+    top: 11px;
 }
 
 .btn-adotar {
+    /* Rectangle */
+    position: absolute;
     width: 157px;
     height: 45.92px;
+    left: 0px;
+    top: 0px;
     background: #DEB959;
     border: none;
-    cursor: pointer;
-    font-family: 'Darker Grotesque', sans-serif;
+
+    /* Adotar */
+    font-family: 'Darker Grotesque';
     font-style: normal;
+    font-weight: 600;
     font-size: 36px;
     line-height: 49px;
     display: flex;
     align-items: center;
-    justify-content: center;
     text-align: center;
+    justify-content: center;
     color: #FFFFFF;
+
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .btn-adotar:hover {
@@ -162,36 +200,241 @@ main {
 /* Botão de adotar lobinho já adotado */
 
 .btn-adotar-adotado {
+    /* Rectangle para botão Adotado */
+    position: absolute;
     width: 157px;
     height: 45.92px;
-    background: #32d43b;
+    left: 0px;
+    top: 0px;
+    background: #7AAC3A;
     border: none;
-    font-family: 'Darker Grotesque', sans-serif;
+
+    /* Texto Adotado */
+    font-family: 'Darker Grotesque';
     font-style: normal;
+    font-weight: 600;
     font-size: 36px;
     line-height: 49px;
     display: flex;
     align-items: center;
-    justify-content: center;
     text-align: center;
+    justify-content: center;
     color: #FFFFFF;
-    transition: all 0.3s ease;
     cursor: default;
-}
-
-.btn-adotar-adotado:hover {
-    background: #2bb832;
-    border-radius: 5px;
-    text-decoration: line-through;
-    transform: translateY(-2px);
 }
 
 /* Nome do dono que adotou */
 .nome-dono {
-    margin-top: 10px;
-    font-family: 'Darker Grotesque', sans-serif;
-    font-size: 18px;
-    color: #666;
+    /* Adotado por: [Nome] */
+    position: absolute;
+    width: 263px;
+    height: 20px;
+    left: 0px;
+    top: 306px;
+    font-family: 'Darker Grotesque';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 20px;
+    color: #000000;
+    margin: 0;
+}
+
+/* ===== VERSÃO 2 - LAYOUT INVERTIDO ===== */
+
+/* Container invertido */
+.conteudo2 {
+    /* R - Group invertido */
+    position: relative;
+    width: 998px;
+    height: 357px;
+    margin: 0 auto 80px auto;
+}
+
+/* Textos invertidos (lado esquerdo) */
+.informacoes2 {
+    /* Dados do Lobo - lado esquerdo */
+    position: absolute;
+    width: 480px;
+    height: 343px;
+    left: 0px;
+    top: 14px;
+}
+
+.header-info2 {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.subtitulo2 {
+    /* Nome do Lobo - alinhado à direita */
+    position: absolute;
+    width: 220.34px;
+    height: 29px;
+    left: 259.66px;
+    /* 480 - 220.34 = 259.66 para alinhar à direita */
+    top: 0px;
+    font-family: 'Darker Grotesque';
+    font-style: normal;
+    font-size: 36px;
+    line-height: 49px;
+    text-align: right;
+    color: #000000;
+    margin: 0;
+}
+
+.idade2 {
+    /* Idade: XX anos - alinhado à direita */
+    position: absolute;
+    width: 126.21px;
+    height: 20px;
+    left: 353.79px;
+    /* 480 - 126.21 = 353.79 para alinhar à direita */
+    top: 53px;
+    /* 725 + 53 - 725 = 53 (diferença entre top do nome e idade) */
+    font-family: 'Darker Grotesque';
+    font-style: normal;
+    font-size: 20px;
+    line-height: 27px;
+    text-align: right;
+    color: #000000;
+    margin: 0;
+}
+
+.descricao2 {
+    /* Descrição - alinhado à direita */
+    position: absolute;
+    width: 476.9px;
+    height: 230.61px;
+    left: 0px;
+    top: 112.39px;
+    /* 837.39 - 725 = 112.39 (diferença do container) */
+    font-family: 'Darker Grotesque';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 20px;
+    text-align: right;
+    color: #000000;
+    margin: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    line-clamp: 10;
+    -webkit-box-orient: vertical;
+}
+
+/* Parte da imagem invertida (lado direito) */
+.base-img2 {
+    /* Detalhe da Imagem - lado direito */
+    box-sizing: border-box;
+    position: absolute;
+    width: 430px;
+    height: 328px;
+    left: 568px;
+    /* 998 - 430 = 568 para posicionar à direita */
+    top: 0px;
+    background: #2C5680;
+    border: 4px solid #333333;
+}
+
+#imagem2 {
+    /* Mask Group / Imagem - lado direito */
+    position: absolute;
+    width: 430px;
+    height: 328px;
+    left: -38px;
+    /* Ajuste para alinhar com a especificação da imagem */
+    top: 29px;
+    object-fit: cover;
+    z-index: 2;
+}
+
+/* Botão invertido (lado esquerdo) */
+.lobinho-botao-container2 {
+    /* Group 3.2 - lado esquerdo */
+    position: absolute;
+    width: 157px;
+    height: 45.92px;
+    left: 0px;
+    top: 29px;
+    /* 740 - 711 = 29 (diferença do container) */
+}
+
+.btn-adotar2 {
+    /* Rectangle - botão invertido */
+    position: absolute;
+    width: 157px;
+    height: 45.92px;
+    left: 0px;
+    top: 0px;
+    background: #DEB959;
+    border: none;
+
+    /* Adotar */
+    font-family: 'Darker Grotesque';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 49px;
+    display: flex;
+    align-items: center;
     text-align: center;
-    font-style: italic;
+    justify-content: center;
+    color: #FFFFFF;
+
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-adotar2:hover {
+    background: #deab2b;
+    border-radius: 5px;
+    transform: translateY(-2px);
+}
+
+/* Botão adotado invertido */
+.btn-adotar-adotado2 {
+    /* Rectangle para botão Adotado - invertido */
+    position: absolute;
+    width: 157px;
+    height: 45.92px;
+    left: 0px;
+    top: 0px;
+    background: #7AAC3A;
+    border: none;
+
+    /* Texto Adotado */
+    font-family: 'Darker Grotesque';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 49px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #FFFFFF;
+    cursor: default;
+}
+
+/* Nome do dono invertido */
+.nome-dono2 {
+    /* Adotado por: [Nome] - alinhado à direita */
+    position: absolute;
+    width: 263px;
+    height: 20px;
+    left: 217px;
+    /* 480 - 263 = 217 para alinhar à direita no container de 480px */
+    top: 343px;
+    /* Posicionado no final do container de informações */
+    font-family: 'Darker Grotesque';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 20px;
+    text-align: right;
+    color: #000000;
+    margin: 0;
 }
