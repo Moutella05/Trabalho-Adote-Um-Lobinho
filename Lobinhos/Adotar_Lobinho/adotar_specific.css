@@ -27,7 +27,9 @@ main {
 
 .Top {
     display: flex;
-    align-items: center;
+    align-items: center; 
+    gap: 100px;
+    margin-right: 300px;
 }
 
 #Imagem {
@@ -118,4 +120,9 @@ main {
     background-color: #2C5680;
     color: white;
     font-size: 25px;
+}
+
+.Adotar:hover {
+    color: #DEB959;
+    transition: 0.3s;
 }

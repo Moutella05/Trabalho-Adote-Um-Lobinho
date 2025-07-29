@@ -43,6 +43,7 @@ function adicionarDados() {
     let objeto = {id: loboSelecionado.id, nome: loboSelecionado.nome, idade: loboSelecionado.idade, descricao: loboSelecionado.descricao, imagem: loboSelecionado.imagem, adotado: true, nomeDono: nomeDono, idadeDono: idadeDono, emailDono: emailDono}
     lobos[ID] = objeto
     localStorage.setItem('lobos', JSON.stringify(lobos));
+    alert("Lobinho adotado com sucesso!");
 }
 
 btnAdotar.addEventListener("click", adicionarDados);
