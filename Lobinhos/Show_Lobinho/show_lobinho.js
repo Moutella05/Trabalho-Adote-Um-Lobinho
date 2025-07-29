@@ -35,9 +35,9 @@ function excluir(posicao) { // a posição pode ser obtida através da função 
 // função que busca o lobinho pelo seu ID -- retorna a posição dele no array de objetos
 // pode ser alterado para qualquer parametro: é so mudar o que está sendo comparado
 function busca(id) {
-    meio = Math.floor(lobos.length)
-    if (id >= (lobos[lobos.length/2].id)){
-        for(let i = (lobos.length/2); i < lobos.length; i++){
+    meio = Math.floor(lobos.length/2)
+    if (id >= (lobos[meio].id)){
+        for(let i = (meio); i < lobos.length; i++){
             if (id == lobos[i].id){
                 return i
             }
