@@ -220,7 +220,7 @@ function mostrarLobinhos(pagina = 1) {
         btnAnterior.disabled = pagina <= 1;
         btnProximo.disabled = pagina >= totalPaginas;
 
-        // configura os botoes para usar as variaveis locais
+        // ao clicar nos btns, chama a funcao de mostrar lobos com a pagina correta
         btnAnterior.onclick = () => {
             if (pagina > 1) mostrarLobinhos(pagina - 1);
         };
