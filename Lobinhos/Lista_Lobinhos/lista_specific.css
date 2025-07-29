@@ -240,11 +240,14 @@ main {
     margin: 0;
 }
 
-/* ===== VERSÃO 2 - LAYOUT INVERTIDO ===== */
+
+
+/*LAYOUT INVERTIDO */
+
+
 
 /* Container invertido */
 .conteudo2 {
-    /* R - Group invertido */
     position: relative;
     width: 998px;
     height: 357px;
@@ -253,7 +256,6 @@ main {
 
 /* Textos invertidos (lado esquerdo) */
 .informacoes2 {
-    /* Dados do Lobo - lado esquerdo */
     position: absolute;
     width: 480px;
     height: 343px;
@@ -268,12 +270,10 @@ main {
 }
 
 .subtitulo2 {
-    /* Nome do Lobo - alinhado à direita */
     position: absolute;
     width: 220.34px;
     height: 29px;
     left: 259.66px;
-    /* 480 - 220.34 = 259.66 para alinhar à direita */
     top: 0px;
     font-family: 'Darker Grotesque';
     font-style: normal;
@@ -285,14 +285,11 @@ main {
 }
 
 .idade2 {
-    /* Idade: XX anos - alinhado à direita */
     position: absolute;
     width: 126.21px;
     height: 20px;
     left: 353.79px;
-    /* 480 - 126.21 = 353.79 para alinhar à direita */
     top: 53px;
-    /* 725 + 53 - 725 = 53 (diferença entre top do nome e idade) */
     font-family: 'Darker Grotesque';
     font-style: normal;
     font-size: 20px;
@@ -303,13 +300,11 @@ main {
 }
 
 .descricao2 {
-    /* Descrição - alinhado à direita */
     position: absolute;
     width: 476.9px;
     height: 230.61px;
     left: 0px;
     top: 112.39px;
-    /* 837.39 - 725 = 112.39 (diferença do container) */
     font-family: 'Darker Grotesque';
     font-style: normal;
     font-weight: 400;
@@ -325,27 +320,23 @@ main {
     -webkit-box-orient: vertical;
 }
 
-/* Parte da imagem invertida (lado direito) */
+/* Parte da imagem invertida */
 .base-img2 {
-    /* Detalhe da Imagem - lado direito */
     box-sizing: border-box;
     position: absolute;
     width: 430px;
     height: 328px;
     left: 568px;
-    /* 998 - 430 = 568 para posicionar à direita */
     top: 0px;
     background: #2C5680;
     border: 4px solid #333333;
 }
 
 #imagem2 {
-    /* Mask Group / Imagem - lado direito */
     position: absolute;
     width: 430px;
     height: 328px;
     left: -38px;
-    /* Ajuste para alinhar com a especificação da imagem */
     top: 29px;
     object-fit: cover;
     z-index: 2;
@@ -353,17 +344,14 @@ main {
 
 /* Botão invertido (lado esquerdo) */
 .lobinho-botao-container2 {
-    /* Group 3.2 - lado esquerdo */
     position: absolute;
     width: 157px;
     height: 45.92px;
     left: 0px;
     top: 29px;
-    /* 740 - 711 = 29 (diferença do container) */
 }
 
 .btn-adotar2 {
-    /* Rectangle - botão invertido */
     position: absolute;
     width: 157px;
     height: 45.92px;
@@ -372,7 +360,6 @@ main {
     background: #DEB959;
     border: none;
 
-    /* Adotar */
     font-family: 'Darker Grotesque';
     font-style: normal;
     font-weight: 600;
@@ -396,7 +383,6 @@ main {
 
 /* Botão adotado invertido */
 .btn-adotar-adotado2 {
-    /* Rectangle para botão Adotado - invertido */
     position: absolute;
     width: 157px;
     height: 45.92px;
@@ -405,7 +391,6 @@ main {
     background: #7AAC3A;
     border: none;
 
-    /* Texto Adotado */
     font-family: 'Darker Grotesque';
     font-style: normal;
     font-weight: 600;
@@ -421,14 +406,11 @@ main {
 
 /* Nome do dono invertido */
 .nome-dono2 {
-    /* Adotado por: [Nome] - alinhado à direita */
     position: absolute;
     width: 263px;
     height: 20px;
     left: 217px;
-    /* 480 - 263 = 217 para alinhar à direita no container de 480px */
     top: 343px;
-    /* Posicionado no final do container de informações */
     font-family: 'Darker Grotesque';
     font-style: normal;
     font-weight: 700;
