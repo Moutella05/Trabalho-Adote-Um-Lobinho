@@ -29,7 +29,7 @@ let lobos = JSON.parse(localStorage.getItem('lobos'));
 function excluir(posicao) { // a posição pode ser obtida através da função Busca: ex.: excluir(busca(10))
     lobos.splice(posicao, 1)
     //!!! Para atualizar a memória: (ainda em forma de comentário para não atualizá-la durante os debugs) !!!
-    //localStorage.setItem('lobos', JSON.stringify(lobo
+    //localStorage.setItem('lobos', JSON.stringify(lobos));
 }
 
 // função que busca o lobinho pelo seu ID -- retorna a posição dele no array de objetos
