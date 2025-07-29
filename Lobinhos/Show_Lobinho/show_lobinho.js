@@ -51,3 +51,12 @@ function busca(id) {
         }
     }
 }
+
+loboSelecionado = lobos[0];
+
+document.getElementById("nomeLobo").textContent = loboSelecionado.nome
+document.getElementById("descricaoLobo").textContent = loboSelecionado.descricao
+document.getElementById("imagemLobo").src = loboSelecionado.imagem
+
+let btnExcluir = document.querySelector("#excluirButton")
+btnExcluir.addEventListener("click", () => (excluir(busca(loboSelecionado.id))));
