@@ -219,7 +219,7 @@ body {
     width: 430px;
     height: 328px;
     object-fit: cover;
-    
+    cursor: pointer;
     position: relative;
     z-index: 2;
 }

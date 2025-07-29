@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap" rel="stylesheet">
     <script src="show_lobinho.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap" rel="stylesheet">
     <title>Detalhes do Lobinho</title>
 </head>
 
@@ -36,8 +39,8 @@
                     <img id="imagemLobo" src="" alt="Imagem do Lobinho">
                 </div>
                 <div class="botao_imagem">
-                    <a href="../Adotar_Lobinho/Adotar_Lobinho.html"><button type="submit" id="adotarButton"><p class="textBotao">ADOTAR</p></button></a>
-                    <a href="../Lista_Lobinhos/Lista_Lobinhos.html"><button type="submit" id="excluirButton"><p class="textBotao" >EXCLUIR</p></button></a>
+                    <button type="submit" onClick = "irParaAdocao(loboSelecionado.id)" id="adotarButton"><p class="textBotao">ADOTAR</p></button>
+                    <button type="submit" onClick = "excluir(busca(loboSelecionado.id))" id="excluirButton"><p class="textBotao" >EXCLUIR</p></button>
                 </div>
             </div>
             <div>

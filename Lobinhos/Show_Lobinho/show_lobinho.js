@@ -1,28 +1,3 @@
-// script pra acessar o lobinho.json
-async function inicializarLocalStorage() {
-    try {
-        const response = await fetch('../../lobinhos.json');
-        if (!response.ok) {
-            throw new Error(`Erro ao buscar lobinho.json: ${response.statusText}`);
-        }
-        const lobos = await response.json();
-        localStorage.setItem('lobos', JSON.stringify(lobos));
-        console.log('Lobos inicializados no localStorage');
-    } catch (error) {
-        console.error('Erro ao inicializar o localStorage:', error);
-    } finally {
-        console.log('Tentativa de inicialização do localStorage concluída');
-    }
-}
-
-if (!localStorage.getItem('lobos')) {
-    inicializarLocalStorage().then(() => {
-        console.log('Inicialização do localStorage concluída');
-    }).catch(error => {
-        console.error('Erro durante a inicialização do localStorage:', error);
-    });
-}
-
 let lobos = JSON.parse(localStorage.getItem('lobos'));
 
 // função que exclui um lobinho da lista segundo sua posição no array de objetos e atualiza a memória
@@ -32,31 +7,27 @@ function excluir(posicao) { // a posição pode ser obtida através da função 
     //localStorage.setItem('lobos', JSON.stringify(lobos));
 }
 
-// função que busca o lobinho pelo seu ID -- retorna a posição dele no array de objetos
-// pode ser alterado para qualquer parametro: é so mudar o que está sendo comparado
-function busca(id) {
-    meio = Math.floor(lobos.length/2)
-    if (id >= (lobos[meio].id)){
-        for(let i = (meio); i < lobos.length; i++){
-            if (id == lobos[i].id){
-                return i
-            }
-        }
-    }
-    else {
-        for(let i = 0; i <= meio; i++){
-            if (id == lobos[i].id){
-                return i
-            }
-        }
-    }
+const Params = new URLSearchParams(window.location.search);
+const idDoLobo = Params.get('id');
+let loboSelecionado = lobos[lobos.findIndex(lobo => lobo.id === parseInt(idDoLobo))];
+
+function irParaAdocao(idDoLobo) {
+    window.location.href = '../Adotar_Lobinho/Adotar_Lobinho.html?id=' + idDoLobo;
 }
 
-loboSelecionado = lobos[0];
+function excluirLobo(idDoLobo) {
+    const lobosAtualizados = lobos.filter(lobo => lobo.id !== idDoLobo);
+    localStorage.setItem('lobos', JSON.stringify(lobosAtualizados));
+    alert("Lobinho excluído com sucesso!");
+    window.location.href = '../Lista_Lobinhos/Lista_Lobinhos.html?id=' + idDoLobo;
+}
 
 document.getElementById("nomeLobo").textContent = loboSelecionado.nome
 document.getElementById("descricaoLobo").textContent = loboSelecionado.descricao
 document.getElementById("imagemLobo").src = loboSelecionado.imagem
 
 let btnExcluir = document.querySelector("#excluirButton")
-btnExcluir.addEventListener("click", () => (excluir(busca(loboSelecionado.id))));
+btnExcluir.addEventListener("click", () => (excluirLobo(loboSelecionado.id)));
+
+let btnAdotar = document.querySelector("#adotarButton")
+btnAdotar.addEventListener("click", () => (irParaAdocao(loboSelecionado.id)));
