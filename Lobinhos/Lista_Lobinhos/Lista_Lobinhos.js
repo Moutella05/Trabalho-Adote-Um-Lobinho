@@ -40,16 +40,10 @@ function mostrarLobinhos(pagina = 1) {
     if (pagina < 1) pagina = 1;
     if (pagina > totalPaginas) pagina = totalPaginas;
 
-    // calcula quais lobos mostrar nesta pagina
-    var inicio = (pagina - 1) * lobosPorPagina;
-    var fim = inicio + lobosPorPagina;
-    var lobosParaMostrar = listaLobos.slice(inicio, fim);
-
-
 
 
     // verificacao no console
-    console.log('mostrando', lobosParaMostrar.length, 'lobinhos da pagina', pagina, 'de', totalPaginas);
+    console.log('pagina', pagina);
 
 
 
@@ -133,15 +127,15 @@ function mostrarLobinhos(pagina = 1) {
                 <div class="informacoes">
                     <p class="subtitulo1">${lobo.nome}</p>
                     <p class="idade1">Idade: <span>${lobo.idade}</span> anos</p>
-                    <p class="descricao1">${descricao}</p>
+                    <p class="descricao1">${descricao}</p>                    
                     <p class="nome-dono">Adotado por: ${lobo.nomeDono || 'Não informado'}</p>
                     
                     <div class="lobinho-botao-container">
-                        <button class="btn-adotar-adotado">Adotado</button>
+                        <button class="btn-adotar-adotado" onclick="desadotarLobo(${lobo.id})">Adotado</button>
                     </div>
                 </div>
             </div>
-        `;
+        `; // dps, tem que tirar o onclick do botao de adotado, para tirar a possibilidade de desadotar
     }
 
     // funcao pra fazer um card de lobo ja adotado (img pra esquerda)
@@ -162,7 +156,7 @@ function mostrarLobinhos(pagina = 1) {
                     <p class="nome-dono2">Adotado por: ${lobo.nomeDono || 'Não informado'}</p>
                     
                     <div class="lobinho-botao-container2">
-                        <button class="btn-adotar-adotado2">Adotado</button>
+                        <button class="btn-adotar-adotado2" onclick="desadotarLobo(${lobo.id})">Adotado</button>
                     </div>
                 </div>
                 <div class="base-img2">
@@ -181,7 +175,12 @@ function mostrarLobinhos(pagina = 1) {
     // variavel pra guardar o html dos cards
     var html = '';
 
-    // passa por todos os lobos da pagina e faz os cards
+    // calcula quais lobos mostrar nesta pagina
+    var inicio = (pagina - 1) * lobosPorPagina;
+    var fim = inicio + lobosPorPagina;
+    var lobosParaMostrar = listaLobos.slice(inicio, fim);
+
+    // passa por todos os lobos da pagina e faz os cards concatenados
     for (var i = 0; i < lobosParaMostrar.length; i++) {
 
         var loboAtual = lobosParaMostrar[i];
@@ -211,6 +210,8 @@ function mostrarLobinhos(pagina = 1) {
     containerCards.innerHTML = html;
 
     // CONFIGURA PAGINACAO
+
+
     var btnAnterior = document.getElementById('btn-anterior');
     var btnProximo = document.getElementById('btn-proximo');
     var infoPagina = document.getElementById('info-pagina');
@@ -218,7 +219,7 @@ function mostrarLobinhos(pagina = 1) {
     if (btnAnterior && btnProximo && infoPagina) {
         infoPagina.textContent = `${pagina} / ${totalPaginas}`;
         btnAnterior.disabled = pagina <= 1;
-        btnProximo.disabled = pagina >= totalPaginas;
+        btnProximo.disabled = pagina === totalPaginas;
 
         // ao clicar nos btns, chama a funcao de mostrar lobos com a pagina correta
         btnAnterior.onclick = () => {
@@ -231,7 +232,36 @@ function mostrarLobinhos(pagina = 1) {
 }
 
 
+
 // FUNCOES AUXILIARES
+
+
+
+// funcao para desadotar um lobo
+
+// depois tem que tirar isso daqui e apagar
+///
+function desadotarLobo(id) {
+    var dadosLocalStorage = localStorage.getItem('lobos');
+    var listaLobos = JSON.parse(dadosLocalStorage || '[]');
+
+    // encontra o lobo pelo id
+    var lobo = listaLobos.find(l => l.id === id);
+    if (lobo) {
+        lobo.adotado = false;
+        lobo.nomeDono = null;
+        lobo.idadeDono = null;
+        lobo.emailDono = null;
+
+        // salva no localStorage
+        localStorage.setItem('lobos', JSON.stringify(listaLobos));
+
+        // atualiza a tela
+        mostrarLobinhos();
+        alert('Lobinho desadotado com sucesso!');
+    }
+}
+///
 
 // quando a pagina carregar
 document.addEventListener('DOMContentLoaded', function () {

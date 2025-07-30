@@ -479,7 +479,17 @@ main {
     text-align: center;
     justify-content: center;
     color: #FFFFFF;
-    cursor: default;
+    
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-adotar-adotado2:hover {
+    background: #df1919;
+    border-radius: 5px;
+    transform: translateY(-2px);
+    text-decoration: line-through;
+
 }
 
 /* Nome do dono invertido */
