@@ -1,6 +1,9 @@
 //variável para controlar o filtro
 let verApenasAdotados = false;
 
+//variável para controlar a busca
+let termoBusca = '';
+
 //função pra mostrar os lobinhos na tela
 function mostrarLobinhos(pagina = 1) {
 
@@ -8,8 +11,19 @@ function mostrarLobinhos(pagina = 1) {
     var dadosLocalStorage = localStorage.getItem('lobos');
     var listaCompletaLobos = JSON.parse(dadosLocalStorage || '[]');
 
-    //aplica filtro
-    const listaLobos = verApenasAdotados ? listaCompletaLobos.filter(lobo => lobo.adotado) : listaCompletaLobos;
+    let lobosParaExibir = listaCompletaLobos;
+
+    //filtro adotados
+    if (verApenasAdotados) {
+        lobosParaExibir = lobosParaExibir.filter(lobo => lobo.adotado);
+    }
+
+    //busca nome
+    if (termoBusca) {
+        lobosParaExibir = lobosParaExibir.filter(lobo =>
+            lobo.nome.toLowerCase().includes(termoBusca)
+        );
+    }
 
     //pega o lugar onde vai colocar os cards
     var containerCards = document.getElementById('lobinhos-grid');
@@ -17,17 +31,31 @@ function mostrarLobinhos(pagina = 1) {
 
     //se nao achou o lugar, para tudo
     if (!containerCards) {
-        console.log('nao achou o lugar pra colocar os lobinhos');
+        console.error('Container #lobinhos-grid não foi encontrado!');
         return;
     }
 
     //se nao tem lobos, mostra esse p no html
-    if (listaLobos.length === 0) {
-        console.log('nenhum lobo encontrado');
-        containerCards.innerHTML = '<p>Nenhum lobinho encontrado!</p>';
-        return;
-    }
+    if (lobosParaExibir.length === 0) {
+        let mensagem = '<p style="text-align: center; width: 100%; font-size: 45px">';
+        
+        if (termoBusca) {
+            mensagem += `Nenhum lobinho com o nome "${termoBusca}" foi encontrado!`;
+        } 
+        else if (verApenasAdotados) {
+            mensagem += 'Nenhum lobinho adotado encontrado!';
+        } else {
+            mensagem += 'Nenhum lobinho para exibir!';
+        }
+        
+        mensagem += '</p>';
+        containerCards.innerHTML = mensagem;
 
+        if(containerPaginacao) containerPaginacao.style.display = 'none';
+        return;
+    } else {
+        if(containerPaginacao) containerPaginacao.style.display = 'flex';
+    }
 
 
 
@@ -37,7 +65,7 @@ function mostrarLobinhos(pagina = 1) {
 
 
     var lobosPorPagina = 4;
-    var totalLobos = listaLobos.length;
+    var totalLobos = lobosParaExibir.length;
     var totalPaginas = Math.ceil(totalLobos / lobosPorPagina);
 
     // garante que a pagina esta dentro do limite
@@ -47,11 +75,15 @@ function mostrarLobinhos(pagina = 1) {
 
 
 
+
     //FUNCTIONS PARA CRIAR OS CARDS
 
 
 
+
+    // funcao pra fazer um card de lobo disponivel (layout 1)
     function fazerCardLoboDisponivel1(lobo) {
+
         var descricao = lobo.descricao;
 
         //se a descricao e muito grande, corta
@@ -61,17 +93,12 @@ function mostrarLobinhos(pagina = 1) {
 
         return `
             <div class="conteudo">
-                <div class="base-img1">
-                    <div class="fundo1"></div>
-                    <img src="${lobo.imagem}" alt="${lobo.nome}" id="imagem1">
-                </div>
+                <div class="base-img1"><img src="${lobo.imagem}" alt="${lobo.nome}" id="imagem1"></div>
                 <div class="informacoes">
                     <p class="subtitulo1">${lobo.nome}</p>
                     <p class="idade1">Idade: <span>${lobo.idade}</span> anos</p>
                     <p class="descricao1">${descricao}</p>
-                    <div class="lobinho-botao-container">
-                        <button class="btn-adotar" onclick="irParaAdocao(${lobo.id})">Adotar</button>
-                    </div>
+                    <div class="lobinho-botao-container"><button class="btn-adotar" onclick="window.location.href = '../Show_Lobinho/Show_Lobinho.html?id=${lobo.id}'">Adotar</button></div>
                 </div>
             </div>
         `;
@@ -79,8 +106,10 @@ function mostrarLobinhos(pagina = 1) {
 
     // funcao pra fazer um card de lobo disponivel (layout 2)
     function fazerCardLoboDisponivel2(lobo) {
+
         var descricao = lobo.descricao;
 
+        // se a descricao e muito grande, corta
         if (descricao.length > 300) {
             descricao = descricao.substring(0, 300) + '...';
         }
@@ -91,16 +120,11 @@ function mostrarLobinhos(pagina = 1) {
                     <p class="subtitulo2">${lobo.nome}</p>
                     <p class="idade2">Idade: <span>${lobo.idade}</span> anos</p>
                     <p class="descricao2">${descricao}</p>
-                    <div class="lobinho-botao-container2">
-                        <button class="btn-adotar2" onclick="irParaAdocao(${lobo.id})">Adotar</button>
-                    </div>
+                    <div class="lobinho-botao-container2"><button class="btn-adotar2" onclick="window.location.href = '../Show_Lobinho/Show_Lobinho.html?id=${lobo.id}'">Adotar</button></div>
                 </div>
-                <div class="base-img2">
-                    <div class="fundo2"></div>
-                    <img src="${lobo.imagem}" alt="${lobo.nome}" id="imagem2">
-                </div>
+                <div class="base-img2"><img src="${lobo.imagem}" alt="${lobo.nome}" id="imagem2"></div>
             </div>
-        `;
+        `; 
     }
 
     // funcao pra fazer um card de lobo ja adotado (layout 1)
@@ -115,29 +139,24 @@ function mostrarLobinhos(pagina = 1) {
 
         return `
             <div class="conteudo">
-                <div class="base-img1">
-                    <div class="fundo1"></div>
-                    <img src="${lobo.imagem}" alt="${lobo.nome}" id="imagem1">
-                </div>
+                <div class="base-img1"><img src="${lobo.imagem}" alt="${lobo.nome}" id="imagem1"></div>
                 <div class="informacoes">
                     <p class="subtitulo1">${lobo.nome}</p>
                     <p class="idade1">Idade: <span>${lobo.idade}</span> anos</p>
                     <p class="descricao1">${descricao}</p>                    
                     <p class="nome-dono">Adotado por: ${lobo.nomeDono || 'Não informado'}</p>
-                    <div class="lobinho-botao-container">
-                        <button class="btn-adotar-adotado">Adotado</button>
-                    </div>
+                    <div class="lobinho-botao-container"><button class="btn-adotar-adotado">Adotado</button></div>
                 </div>
             </div>
         `; // dps, tem que tirar o onclick do botao de adotado, para tirar a possibilidade de desadotar
     }
 
-    // funcao pra fazer um card de lobo ja adotado (img pra esquerda)
+     // funcao pra fazer um card de lobo ja adotado (img pra esquerda)
     function fazerCardLoboAdotado2(lobo) {
 
         var descricao = lobo.descricao;
-
-        // se a descricao e muito grande, corta
+        
+        //se a descricao e muito grande, corta
         if (descricao.length > 300) {
             descricao = descricao.substring(0, 300) + '...';
         }
@@ -149,14 +168,9 @@ function mostrarLobinhos(pagina = 1) {
                     <p class="idade2">Idade: <span>${lobo.idade}</span> anos</p>
                     <p class="descricao2">${descricao}</p>
                     <p class="nome-dono2">Adotado por: ${lobo.nomeDono || 'Não informado'}</p>
-                    <div class="lobinho-botao-container2">
-                        <button class="btn-adotar-adotado2">Adotado</button>
-                    </div>
+                    <div class="lobinho-botao-container2"><button class="btn-adotar-adotado2">Adotado</button></div>
                 </div>
-                <div class="base-img2">
-                    <div class="fundo2"></div>
-                    <img src="${lobo.imagem}" alt="${lobo.nome}" id="imagem2">
-                </div>
+                <div class="base-img2"><img src="${lobo.imagem}" alt="${lobo.nome}" id="imagem2"></div>
             </div>
         `;
     }
@@ -172,7 +186,7 @@ function mostrarLobinhos(pagina = 1) {
     // calcula quais lobos mostrar nesta pagina
     var inicio = (pagina - 1) * lobosPorPagina;
     var fim = inicio + lobosPorPagina;
-    var lobosParaMostrar = listaLobos.slice(inicio, fim);
+    var lobosParaMostrar = lobosParaExibir.slice(inicio, fim);
 
     // passa por todos os lobos da pagina e faz os cards concatenados
     for (var i = 0; i < lobosParaMostrar.length; i++) {
@@ -183,26 +197,22 @@ function mostrarLobinhos(pagina = 1) {
 
         // se o lobo nao foi adotado, faz card normal
         if (!loboAtual.adotado) {
-            if (ehLayout2) {
-                html += fazerCardLoboDisponivel2(loboAtual);
-            } else {
-                html += fazerCardLoboDisponivel1(loboAtual);
-            }
+            if (ehLayout2) { html += fazerCardLoboDisponivel2(loboAtual); } 
+            else { html += fazerCardLoboDisponivel1(loboAtual); }
         } else {
             // se ja foi adotado, faz card diferente
-            if (ehLayout2) {
-                html += fazerCardLoboAdotado2(loboAtual);
-            } else {
-                html += fazerCardLoboAdotado1(loboAtual);
-            }
+            if (ehLayout2) { html += fazerCardLoboAdotado2(loboAtual); } 
+            else { html += fazerCardLoboAdotado1(loboAtual); }
         }
     }
 
-     // coloca todos os cards na tela
+    // coloca todos os cards na tela
     containerCards.innerHTML = html;
 
 
+
     // CONFIGURA PAGINACAO
+
 
 
     var btnAnterior = document.getElementById('btn-anterior');
@@ -210,17 +220,14 @@ function mostrarLobinhos(pagina = 1) {
     var infoPagina = document.getElementById('info-pagina');
 
     if (btnAnterior && btnProximo && infoPagina) {
+
         infoPagina.textContent = `${pagina} / ${totalPaginas}`;
         btnAnterior.disabled = pagina <= 1;
         btnProximo.disabled = pagina >= totalPaginas;
 
         // ao clicar nos btns, chama a funcao de mostrar lobos com a pagina correta
-        btnAnterior.onclick = () => {
-            if (pagina > 1) mostrarLobinhos(pagina - 1);
-        };
-        btnProximo.onclick = () => {
-            if (pagina < totalPaginas) mostrarLobinhos(pagina + 1);
-        };
+        btnAnterior.onclick = () => { if (pagina > 1) mostrarLobinhos(pagina - 1); };
+        btnProximo.onclick = () => { if (pagina < totalPaginas) mostrarLobinhos(pagina + 1); };
     }
 }
 
@@ -229,26 +236,46 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('pagina carregou');
 
     //adiciona o evento de clique ao botão de filtro
-    const btnFiltro = document.getElementById('filtro');
-    if (btnFiltro) {
-        btnFiltro.addEventListener('click', () => {
+    const botao_filtro = document.getElementById('filtro');
+    if (botao_filtro) {
+        botao_filtro.addEventListener('click', () => {
             //inverte o estado do filtro
             verApenasAdotados = !verApenasAdotados;
 
             // atualiza a aparência do botão
             if (verApenasAdotados) {
-                btnFiltro.classList.add('ativo');
-                btnFiltro.textContent = '✔';
-                btnFiltro.style.backgroundColor = '#2C5680';
-                btnFiltro.style.color = 'white';
+                botao_filtro.classList.add('ativo');
+                botao_filtro.textContent = '✔';
+                botao_filtro.style.backgroundColor = '#2C5680';
+                botao_filtro.style.color = 'white';
             } else {
-                btnFiltro.classList.remove('ativo');
-                btnFiltro.textContent = '';
-                btnFiltro.style.backgroundColor = 'white';
+                botao_filtro.classList.remove('ativo');
+                botao_filtro.textContent = '';
+                botao_filtro.style.backgroundColor = 'white';
             }
 
             // Re-renderiza a lista de lobos a partir da primeira página
             mostrarLobinhos(1);
+        });
+    }
+
+    //buscar elementos
+    const input_busca = document.getElementById('search-input');
+    const lupa_busca = document.querySelector('.lupa');
+
+
+    //fazer a busca acontecer
+    function executarBusca() {
+        termoBusca = input_busca.value.trim().toLowerCase();
+        mostrarLobinhos(1);
+    }
+
+    if (input_busca && lupa_busca) {
+        lupa_busca.addEventListener('click', executarBusca);
+        input_busca.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                executarBusca();
+            }
         });
     }
 
