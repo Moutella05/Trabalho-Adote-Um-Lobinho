@@ -39,6 +39,13 @@ main {
     height: 47px;
     border: 0;
     margin-top: 13px;
+    transition: all 0.3s ease;
+}
+
+.Cima_Top #adicionar:hover {
+    background: #deab2b;
+    border-radius: 5px;
+    transform: translateY(-2px);
 }
 
 .Cima_Top p{
@@ -65,7 +72,7 @@ main {
     border: none;
     outline: none;
     width: 100%;
-    font-size: 16px;
+    font-size: 22px;
 }
 
 .Cima_Bottom {
@@ -299,6 +306,17 @@ main {
     justify-content: center;
     color: #FFFFFF;
     cursor: default;
+
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-adotar-adotado:hover {
+    background: #df1919;
+    border-radius: 5px;
+    transform: translateY(-2px);
+    text-decoration: line-through;
+
 }
 
 /* Nome do dono que adotou */
