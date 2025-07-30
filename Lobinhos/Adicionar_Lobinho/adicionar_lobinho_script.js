@@ -34,8 +34,7 @@ function salvar() {
     }
     objeto = { id: lobos[lobos.length - 1].id + 1, nome: nome, idade: anos, descricao: descricao, imagem: link, adotado: false, nomeDono: null, idadeDono: null, emailDono: null }
     lobos.push(objeto)
-    //!!! Para atualizar a memória: (ainda em forma de comentário para não atualizá-la durante os debugs) !!!
-    //localStorage.setItem('lobos', JSON.stringify(lobos));
+    localStorage.setItem('lobos', JSON.stringify(lobos));
     salvo_sucesso()
     limpar(5)
 }
