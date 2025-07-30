@@ -519,7 +519,7 @@ main {
     height: 21px;
     margin: 40px auto;
     display: flex;
-    align-items: center;
+    align-self: center;
     justify-content: space-between;
 }
 
@@ -529,7 +529,7 @@ main {
     position: relative;
     width: 30px;
     height: 21px;
-    background: #2C5680;
+    background: white;
     border: none;
     cursor: pointer;
 
@@ -543,6 +543,8 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    font-size: 35px;
 }
 
 #info-pagina {
@@ -550,11 +552,12 @@ main {
     position: relative;
     width: 105px;
     height: 21px;
+    margin-top: 5px;
 
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 21px;
     text-align: center;
     color: #000000;
@@ -562,6 +565,13 @@ main {
 
 #btn-anterior:disabled,
 #btn-proximo:disabled {
-    background: #cccccc;
+    background: white;
     cursor: not-allowed;
+}
+
+#btn-anterior:not(:disabled):hover,
+#btn-proximo:not(:disabled):hover {
+   transform: scale(1.2);
+   transition: 0.5s;
+   color: #2C5680;
 }
