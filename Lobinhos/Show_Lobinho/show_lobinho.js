@@ -3,8 +3,7 @@ let lobos = JSON.parse(localStorage.getItem('lobos'));
 // função que exclui um lobinho da lista segundo sua posição no array de objetos e atualiza a memória
 function excluir(posicao) { // a posição pode ser obtida através da função Busca: ex.: excluir(busca(10))
     lobos.splice(posicao, 1)
-    //!!! Para atualizar a memória: (ainda em forma de comentário para não atualizá-la durante os debugs) !!!
-    //localStorage.setItem('lobos', JSON.stringify(lobos));
+    localStorage.setItem('lobos', JSON.stringify(lobos));
 }
 
 const Params = new URLSearchParams(window.location.search);
